@@ -1,0 +1,414 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/*
+  Токены дизайна — единственная точка кастомизации цветов и шрифтов.
+  Консультант по визуалу правит значения здесь; классы Tailwind подхватят их.
+*/
+:root {
+  /* Глубокий синий / тёмно-серый */
+  --color-navy-950: #060d18;
+  --color-navy-900: #0b1a2e;
+  --color-navy-800: #132840;
+  --color-navy-700: #1e3a5f;
+
+  /* Текст */
+  --color-ink: #0f1724;
+  --color-ink-muted: #4a5568;
+  --color-ink-soft: #6b7280;
+
+  /* Фон страницы — холодный белый, не кремовый */
+  --color-paper: #f6f7f9;
+  --color-paper-warm: #eef1f5;
+
+  /* Золотой / бронзовый акцент */
+  --color-bronze: #b8956c;
+  --color-bronze-light: #d4b896;
+  --color-bronze-dark: #8f7349;
+
+  /* Типографика */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+
+  --header-h: 4.25rem;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-duration: 0.85s;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  /* Строгая геометрия: без скруглений по умолчанию */
+  button,
+  input,
+  textarea,
+  select,
+  a.btn-primary,
+  a.btn-ghost {
+    border-radius: 0;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-bronze) 35%, transparent);
+    color: var(--color-navy-950);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+      bg-bronze px-7 py-3.5
+      font-sans text-sm font-semibold tracking-wide text-navy-950
+      transition-all duration-300 ease-out-expo
+      hover:bg-bronze-light
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+      border border-white/25 px-4 py-2.5
+      font-sans text-sm font-medium tracking-wide text-paper
+      transition-colors duration-300
+      hover:border-bronze/60 hover:text-bronze-light
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium tracking-wide text-paper/80
+      transition-colors duration-200
+      hover:text-bronze-light
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bronze;
+  }
+
+  /* ——— Фундамент секций ——— */
+  .section {
+    @apply scroll-mt-[var(--header-h)] py-20 sm:py-24 lg:py-28;
+  }
+
+  .section--paper {
+    @apply bg-paper text-ink;
+  }
+
+  .section--muted {
+    @apply bg-paper-warm text-ink;
+  }
+
+  .section--navy {
+    @apply bg-navy-900 text-paper;
+  }
+
+  .section--navy-deep {
+    @apply bg-navy-950 text-paper;
+  }
+
+  .section-header {
+    @apply max-w-2xl;
+  }
+
+  .section-eyebrow {
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.24em] text-bronze-dark;
+  }
+
+  .section--navy .section-eyebrow,
+  .section--navy-deep .section-eyebrow {
+    @apply text-bronze-light/90;
+  }
+
+  .section-title {
+    @apply mt-4 font-display text-[clamp(1.85rem,3vw+0.5rem,2.75rem)] font-semibold leading-[1.15] tracking-[0.01em] text-navy-900;
+  }
+
+  .section--navy .section-title,
+  .section--navy-deep .section-title {
+    @apply text-paper;
+  }
+
+  .section-lead {
+    @apply mt-4 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg;
+  }
+
+  .section--navy .section-lead,
+  .section--navy-deep .section-lead {
+    @apply text-paper/65;
+  }
+
+  .section-rule {
+    @apply mt-6 h-px w-12 bg-bronze;
+  }
+
+  .section-body {
+    @apply mt-12 lg:mt-14;
+  }
+
+  /* Слот-заглушка: видимый каркас без «карточного» UI */
+  .slot {
+    @apply border border-dashed border-ink/15 px-5 py-6 text-sm text-ink-soft;
+  }
+
+  .section--navy .slot,
+  .section--navy-deep .slot {
+    @apply border-white/15 text-paper/45;
+  }
+
+  .slot__label {
+    @apply mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-dark;
+  }
+
+  .section--navy .slot__label,
+  .section--navy-deep .slot__label {
+    @apply text-bronze-light/70;
+  }
+
+  .grid-services {
+    @apply grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-services > * {
+    @apply bg-paper;
+  }
+
+  .section--muted .grid-services > * {
+    @apply bg-paper-warm;
+  }
+
+  .grid-process {
+    @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6;
+  }
+
+  .grid-cases {
+    @apply grid gap-8 lg:grid-cols-3;
+  }
+
+  .grid-credentials {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-reviews {
+    @apply grid gap-8 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .site-footer {
+    @apply border-t border-white/10 bg-navy-950 py-10 text-paper/50;
+  }
+
+  .site-footer a {
+    @apply text-paper/70 transition-colors hover:text-bronze-light;
+  }
+
+  /* Атмосфера hero: сетка + диагональный блик + виньетка */
+  .hero-atmosphere {
+    background-color: var(--color-navy-950);
+    background-image:
+      linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 42%,
+        color-mix(in srgb, var(--color-bronze) 7%, transparent) 58%,
+        transparent 72%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-navy-800) 55%, transparent) 0%,
+        transparent 45%,
+        var(--color-navy-950) 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 79px,
+        color-mix(in srgb, white 3.5%, transparent) 79px,
+        color-mix(in srgb, white 3.5%, transparent) 80px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 79px,
+        color-mix(in srgb, white 3.5%, transparent) 79px,
+        color-mix(in srgb, white 3.5%, transparent) 80px
+      );
+    background-size: auto, auto, 80px 80px, 80px 80px;
+    animation: grid-drift 28s linear infinite;
+  }
+
+  .hero-rule {
+    @apply h-px origin-left bg-bronze;
+    width: 3rem;
+    opacity: 0;
+    transform: scaleX(0);
+    transition:
+      opacity 0.5s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .hero-rule.is-in {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* Острый геометрический акцент вместо «мягких» пятен */
+  .hero-geometry {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-geometry__plane {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: min(48vw, 34rem);
+    height: 120%;
+    background:
+      linear-gradient(
+        160deg,
+        color-mix(in srgb, var(--color-bronze) 10%, transparent) 0%,
+        transparent 55%
+      ),
+      linear-gradient(
+        200deg,
+        color-mix(in srgb, white 4%, transparent) 0%,
+        transparent 40%
+      );
+    clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateX(8%);
+    opacity: 0;
+    animation: plane-in 1.4s var(--ease-out-expo) 0.15s both;
+  }
+
+  .hero-geometry__edge {
+    position: absolute;
+    top: 12%;
+    right: 12%;
+    width: 1px;
+    height: 55%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in srgb, var(--color-bronze) 55%, transparent),
+      transparent
+    );
+    opacity: 0;
+    animation: fade-in 1.2s var(--ease-out-expo) 0.45s both;
+  }
+
+  /*
+    Reveal-система (в духе Korobkov):
+    элементы стартуют скрытыми, JS добавляет .is-in
+  */
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.35rem);
+    transition:
+      opacity var(--reveal-duration) var(--ease-out-expo),
+      transform var(--reveal-duration) var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Только построчный clip-reveal — без второго translate у родителя */
+  .reveal-lines {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .reveal-line {
+    opacity: 0;
+    transform: translateY(110%);
+    transition:
+      opacity 0.55s var(--ease-out-expo),
+      transform 0.85s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-lines.is-in .reveal-line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-mask {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes plane-in {
+  from {
+    opacity: 0;
+    transform: translateX(14%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(8%);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 0 0, 0 0, 80px 0, 0 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmosphere {
+    animation: none;
+  }
+
+  .hero-geometry__plane,
+  .hero-geometry__edge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-rule {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

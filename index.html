@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Квалифицированная юридическая помощь в Новосибирске. Защита бизнеса и физических лиц в судах."
+  />
+  <title>Анна Ковалёва — юрист, Новосибирск</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <!--
+    Карта секций (фундамент):
+    #top / hero → #about → #services → #process → #cases → #credentials → #reviews → #contact → footer
+    Навигация в шапке ведёт на все секции по якорям.
+  -->
+
+  <!-- ========== ШАПКА ========== -->
+  <header
+    data-header
+    class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[scrolled]:border-white/10"
+  >
+    <div class="container-page flex h-[var(--header-h)] items-center justify-between gap-6">
+      <a href="#top" class="group flex min-w-0 flex-col leading-none">
+        <span class="font-display text-xl font-semibold tracking-[0.04em] text-paper sm:text-2xl">
+          Анна Ковалёва
+        </span>
+        <span class="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-bronze-light/90">
+          Юрист · Новосибирск
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Основная навигация">
+        <a class="nav-link" href="#about">Обо мне</a>
+        <a class="nav-link" href="#services">Услуги</a>
+        <a class="nav-link" href="#process">Как работаю</a>
+        <a class="nav-link" href="#cases">Кейсы</a>
+        <a class="nav-link" href="#credentials">Дипломы</a>
+        <a class="nav-link" href="#reviews">Отзывы</a>
+        <a class="nav-link" href="#contact">Контакты</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a
+          class="btn-ghost hidden sm:inline-flex"
+          href="https://t.me/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Написать в Telegram"
+        >
+          <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.488.02.941-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+          Telegram
+        </a>
+
+        <a
+          class="inline-flex size-10 items-center justify-center border border-white/25 text-paper transition-colors hover:border-bronze/60 hover:text-bronze-light sm:hidden"
+          href="tel:+73832000000"
+          aria-label="Позвонить"
+        >
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293a1.125 1.125 0 0 1-1.21.47 12.035 12.035 0 0 1-7.143-7.143 1.125 1.125 0 0 1 .47-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+        </a>
+
+        <button
+          type="button"
+          class="inline-flex size-10 items-center justify-center border border-white/25 text-paper transition-colors hover:border-bronze/60 hover:text-bronze-light lg:hidden"
+          data-menu-toggle
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+          aria-label="Открыть меню"
+        >
+          <svg data-icon-open class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg data-icon-close class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" hidden aria-hidden="true">
+            <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="mobile-nav"
+      data-mobile-nav
+      class="border-t border-white/10 bg-navy-950/95 backdrop-blur-md lg:hidden"
+      hidden
+    >
+      <nav class="container-page flex flex-col gap-1 py-4" aria-label="Мобильная навигация">
+        <a class="nav-link py-3" href="#about">Обо мне</a>
+        <a class="nav-link py-3" href="#services">Услуги</a>
+        <a class="nav-link py-3" href="#process">Как работаю</a>
+        <a class="nav-link py-3" href="#cases">Кейсы</a>
+        <a class="nav-link py-3" href="#credentials">Дипломы</a>
+        <a class="nav-link py-3" href="#reviews">Отзывы</a>
+        <a class="nav-link py-3" href="#contact">Контакты</a>
+        <a
+          class="btn-primary mt-3 w-full sm:w-auto"
+          href="https://t.me/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Написать в Telegram
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ========== 01. HERO ========== -->
+    <!--
+      УТП — активен вариант 1:
+      1. Правовая защита, / которая сохраняет ваше дело и спокойствие
+      2. Юридическая сила на вашей стороне — / в суде и в переговорах
+      3. Защищаю интересы бизнеса и частных лиц / без лишнего шума
+    -->
+    <section
+      data-hero
+      class="hero-atmosphere relative flex min-h-dvh flex-col justify-end overflow-hidden pb-16 pt-[calc(var(--header-h)+3rem)] sm:justify-center sm:pb-24 sm:pt-[var(--header-h)]"
+      aria-labelledby="hero-heading"
+    >
+      <div class="hero-geometry" aria-hidden="true">
+        <div class="hero-geometry__plane"></div>
+        <div class="hero-geometry__edge"></div>
+      </div>
+
+      <div class="container-page relative z-10 max-w-3xl">
+        <p
+          class="reveal text-[0.7rem] font-medium uppercase tracking-[0.24em] text-bronze-light/90"
+          data-reveal
+          data-reveal-delay="0"
+        >
+          Суды · ЖКХ · Бизнес · Новосибирск
+        </p>
+
+        <p
+          class="reveal reveal-lines mt-5 font-display text-[clamp(2.75rem,6vw+1rem,4.5rem)] font-semibold leading-[1.05] tracking-[0.01em] text-paper"
+          data-reveal
+          data-reveal-delay="80"
+        >
+          <span class="reveal-mask">
+            <span class="reveal-line inline-block">Анна Ковалёва</span>
+          </span>
+        </p>
+
+        <div
+          class="hero-rule mt-7"
+          data-reveal
+          data-reveal-delay="180"
+          aria-hidden="true"
+        ></div>
+
+        <h1
+          id="hero-heading"
+          class="reveal reveal-lines mt-7 max-w-2xl font-display text-[clamp(1.35rem,2.2vw+0.6rem,1.85rem)] font-medium leading-[1.35] tracking-normal text-paper/90"
+          data-reveal
+          data-reveal-delay="220"
+        >
+          <span class="reveal-mask">
+            <span class="reveal-line inline-block">Правовая защита,</span>
+          </span>
+          <span class="reveal-mask mt-1">
+            <span class="reveal-line inline-block" style="--reveal-delay: 320ms">
+              которая сохраняет ваше дело и спокойствие
+            </span>
+          </span>
+        </h1>
+
+        <p
+          class="reveal mt-5 max-w-xl text-base leading-relaxed text-paper/65 sm:text-lg"
+          data-reveal
+          data-reveal-delay="380"
+        >
+          Квалифицированная юридическая помощь в Новосибирске.
+          Защита бизнеса и физических лиц в судах — без шаблонных решений.
+        </p>
+
+        <div
+          class="reveal mt-10 flex flex-wrap items-center gap-4"
+          data-reveal
+          data-reveal-delay="460"
+        >
+          <a class="btn-primary" href="#contact">Получить консультацию</a>
+          <a class="nav-link hidden sm:inline-flex" href="#services">Смотреть услуги →</a>
+        </div>
+      </div>
+
+      <div
+        class="container-page reveal relative z-10 mt-16 sm:absolute sm:inset-x-0 sm:bottom-8 sm:mt-0"
+        data-reveal
+        data-reveal-delay="560"
+      >
+        <p class="text-xs font-medium uppercase tracking-[0.2em] text-paper/40">
+          Частная практика · Судебное представительство · Новосибирск
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== 02. ОБО МНЕ ========== -->
+    <section id="about" class="section section--paper" aria-labelledby="about-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Обо мне</p>
+          <h2 id="about-title" class="section-title">Юрист с практикой, а не с шаблонами</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Краткий профиль, образование и подход к работе. Наполнение — на этапе секции.
+          </p>
+        </header>
+
+        <div class="section-body grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <div class="slot reveal lg:col-span-5" data-reveal data-reveal-delay="80">
+            <span class="slot__label">Фото / портрет</span>
+            Место под фотографию юриста (строгое портретное изображение, без карточки).
+          </div>
+
+          <div class="flex flex-col gap-6 lg:col-span-7">
+            <div class="slot reveal" data-reveal data-reveal-delay="120">
+              <span class="slot__label">Биография</span>
+              Текст о стаже, специализации, ассоциациях. 2–3 абзаца.
+            </div>
+            <div class="slot reveal" data-reveal data-reveal-delay="180">
+              <span class="slot__label">Образование</span>
+              Хронология: год → учебное заведение → квалификация.
+            </div>
+            <div class="slot reveal" data-reveal data-reveal-delay="240">
+              <span class="slot__label">Миссия / принципы</span>
+              1 короткий блок о том, зачем юрист работает и как ведёт дела.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03. УСЛУГИ И ПРАЙС ========== -->
+    <section id="services" class="section section--muted" aria-labelledby="services-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Услуги</p>
+          <h2 id="services-title" class="section-title">Чем могу помочь</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Перечень направлений и ориентиры по стоимости. Детальный прайс — на этапе секции.
+          </p>
+        </header>
+
+        <div class="section-body">
+          <div class="grid-services reveal" data-reveal data-reveal-delay="80">
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 01</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 02</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 03</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 04</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 05</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+            <div class="slot border-0">
+              <span class="slot__label">Услуга 06</span>
+              Название · от X ₽ · краткий список включений
+            </div>
+          </div>
+
+          <p class="reveal mt-8 text-sm text-ink-soft" data-reveal data-reveal-delay="140">
+            Ориентир по структуре прайса: консультация, ЖКХ/УК, жилищные споры, взыскание,
+            защита потребителей, арбитраж, договоры, абонентское обслуживание.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 04. КАК РАБОТАЮ ========== -->
+    <section id="process" class="section section--paper" aria-labelledby="process-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Процесс</p>
+          <h2 id="process-title" class="section-title">Как выстраивается работа</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Понятный путь от первого обращения до результата — без лишних шагов.
+          </p>
+        </header>
+
+        <div class="section-body grid-process">
+          <div class="slot reveal" data-reveal data-reveal-delay="60">
+            <span class="slot__label">Шаг 01</span>
+            Заявка / консультация — что происходит на старте
+          </div>
+          <div class="slot reveal" data-reveal data-reveal-delay="120">
+            <span class="slot__label">Шаг 02</span>
+            Анализ ситуации и позиция по делу
+          </div>
+          <div class="slot reveal" data-reveal data-reveal-delay="180">
+            <span class="slot__label">Шаг 03</span>
+            Документы, переговоры или суд
+          </div>
+          <div class="slot reveal" data-reveal data-reveal-delay="240">
+            <span class="slot__label">Шаг 04</span>
+            Результат и сопровождение исполнения
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 05. КЕЙСЫ ========== -->
+    <section id="cases" class="section section--navy" aria-labelledby="cases-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Практика</p>
+          <h2 id="cases-title" class="section-title">Мои кейсы</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Короткие истории дел: проблема → задача → результат. Детали — на этапе секции.
+          </p>
+        </header>
+
+        <div class="section-body grid-cases">
+          <article class="slot reveal" data-reveal data-reveal-delay="80">
+            <span class="slot__label">Кейс 01</span>
+            Заголовок дела · проблема · результат · ссылка «Подробнее»
+          </article>
+          <article class="slot reveal" data-reveal data-reveal-delay="140">
+            <span class="slot__label">Кейс 02</span>
+            Заголовок дела · проблема · результат · ссылка «Подробнее»
+          </article>
+          <article class="slot reveal" data-reveal data-reveal-delay="200">
+            <span class="slot__label">Кейс 03</span>
+            Заголовок дела · проблема · результат · ссылка «Подробнее»
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. ДИПЛОМЫ ========== -->
+    <section id="credentials" class="section section--muted" aria-labelledby="credentials-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Документы</p>
+          <h2 id="credentials-title" class="section-title">Дипломы и сертификаты</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Подтверждение квалификации. Сетка превью + просмотр в полном размере.
+          </p>
+        </header>
+
+        <div class="section-body grid-credentials">
+          <div class="slot reveal aspect-[4/3] flex flex-col justify-end" data-reveal data-reveal-delay="60">
+            <span class="slot__label">Документ 01</span>
+            Превью диплома / сертификата
+          </div>
+          <div class="slot reveal aspect-[4/3] flex flex-col justify-end" data-reveal data-reveal-delay="120">
+            <span class="slot__label">Документ 02</span>
+            Превью диплома / сертификата
+          </div>
+          <div class="slot reveal aspect-[4/3] flex flex-col justify-end" data-reveal data-reveal-delay="180">
+            <span class="slot__label">Документ 03</span>
+            Превью диплома / сертификата
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. ОТЗЫВЫ ========== -->
+    <section id="reviews" class="section section--paper" aria-labelledby="reviews-title">
+      <div class="container-page">
+        <header class="section-header reveal" data-reveal>
+          <p class="section-eyebrow">Отзывы</p>
+          <h2 id="reviews-title" class="section-title">Что говорят доверители</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Живые формулировки клиентов — без звёздочек и декоративных бейджей.
+          </p>
+        </header>
+
+        <div class="section-body grid-reviews">
+          <blockquote class="slot reveal" data-reveal data-reveal-delay="80">
+            <span class="slot__label">Отзыв 01</span>
+            Цитата · имя · роль / компания
+          </blockquote>
+          <blockquote class="slot reveal" data-reveal data-reveal-delay="140">
+            <span class="slot__label">Отзыв 02</span>
+            Цитата · имя · роль / компания
+          </blockquote>
+          <blockquote class="slot reveal" data-reveal data-reveal-delay="200">
+            <span class="slot__label">Отзыв 03</span>
+            Цитата · имя · роль / компания
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. КОНТАКТЫ ========== -->
+    <section id="contact" class="section section--navy-deep" aria-labelledby="contact-title">
+      <div class="container-page grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <header class="section-header reveal lg:col-span-5" data-reveal>
+          <p class="section-eyebrow">Контакты</p>
+          <h2 id="contact-title" class="section-title">Свяжитесь со мной</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+          <p class="section-lead">
+            Оставьте заявку или напишите напрямую. Форма уйдёт на backendless-сервис (POST).
+          </p>
+
+          <ul class="mt-10 space-y-4 text-sm text-paper/70">
+            <li class="slot border-white/10">
+              <span class="slot__label">Телефон</span>
+              <a href="tel:+73832000000">+7 (383) 000-00-00</a>
+            </li>
+            <li class="slot border-white/10">
+              <span class="slot__label">Email</span>
+              <a href="mailto:lawyer@example.ru">lawyer@example.ru</a>
+            </li>
+            <li class="slot border-white/10">
+              <span class="slot__label">Мессенджеры</span>
+              Telegram · WhatsApp — ссылки на этапе секции
+            </li>
+          </ul>
+        </header>
+
+        <div class="reveal lg:col-span-7" data-reveal data-reveal-delay="120">
+          <!-- action/endpoint подставим при подключении формы -->
+          <form
+            class="space-y-4"
+            action="#"
+            method="post"
+            data-contact-form
+            onsubmit="return false;"
+          >
+            <label class="block">
+              <span class="mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-light/70">
+                Имя
+              </span>
+              <input
+                class="w-full border border-white/15 bg-navy-900/50 px-4 py-3 text-sm text-paper placeholder:text-paper/35 focus:border-bronze focus:outline-none"
+                type="text"
+                name="name"
+                placeholder="Как вас зовут?"
+                autocomplete="name"
+                required
+              />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-light/70">
+                Телефон
+              </span>
+              <input
+                class="w-full border border-white/15 bg-navy-900/50 px-4 py-3 text-sm text-paper placeholder:text-paper/35 focus:border-bronze focus:outline-none"
+                type="tel"
+                name="phone"
+                placeholder="Ваш номер"
+                autocomplete="tel"
+                required
+              />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-light/70">
+                Ситуация
+              </span>
+              <textarea
+                class="min-h-28 w-full resize-y border border-white/15 bg-navy-900/50 px-4 py-3 text-sm text-paper placeholder:text-paper/35 focus:border-bronze focus:outline-none"
+                name="message"
+                placeholder="Кратко опишите вопрос"
+                rows="4"
+              ></textarea>
+            </label>
+
+            <button class="btn-primary w-full sm:w-auto" type="submit">
+              Оставить заявку
+            </button>
+
+            <p class="text-xs leading-relaxed text-paper/40">
+              Нажимая кнопку, вы соглашаетесь с
+              <a class="underline decoration-white/25 underline-offset-2 hover:text-bronze-light" href="#privacy">
+                политикой конфиденциальности
+              </a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="privacy">
+    <div class="container-page flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="font-display text-lg font-semibold text-paper">Анна Ковалёва</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.18em]">Юрист · Новосибирск</p>
+      </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Услуги</a>
+        <a href="#contact">Контакты</a>
+        <a href="#privacy">Политика конфиденциальности</a>
+      </div>
+      <p class="text-xs">© <span data-year>2026</span> Частная юридическая практика</p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "lawyer-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Одностраничный лендинг частного юриста (статика для Selectel S3)",
+  "scripts": {
+    "dev": "./bin/tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
+    "build": "./bin/tailwindcss -i ./css/input.css -o ./css/styles.css --minify"
+  }
+}

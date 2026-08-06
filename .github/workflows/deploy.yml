@@ -3,33 +3,33 @@ name: Build and Deploy to Selectel S3
 on:
   push:
     branches:
-      - main # Триггер на пуш в ветку main
+      - main # Пайплайн запускается автоматически при пуше в main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Скачиваем актуальный код из вашего репозитория
+    # Шаг 1: Клонируем ваш код на сервер сборки GitHub
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 2. Настраиваем окружение Node.js (версия 24, чтобы не было варнингов)
+    # Шаг 2: Разворачиваем среду Node.js актуальной 24-й версии
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 24
         cache: 'npm'
 
-    # 3. Чистая установка всех ваших зависимостей (Tailwind, Vite и т.д.)
+    # Шаг 3: Устанавливаем зависимости (Vite, Tailwind и т.д.) из вашего package.json
     - name: Install dependencies
       run: npm ci
 
-    # 4. Запуск сборщика Vite (он создаст ту самую папку ./dist и положит туда скомпилированный HTML/CSS)
+    # Шаг 4: Запускаем сборку проекта. Именно эта команда создает магическую папку ./dist
     - name: Build project
       run: npm run build
 
-    # 5. Деплой сгенерированной папки ./dist напрямую в S3 Selectel
+    # Шаг 5: Берем готовую папку ./dist и синхронизируем её с бакетом Selectel
     - name: Deploy dist folder to Selectel S3
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}

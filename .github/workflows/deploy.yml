@@ -16,14 +16,14 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 24 # Обновили до актуальной Node 24
+        node-version: 24
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
 
     - name: Build project
-      run: npm run build # Vite соберет проект в папку ./dist
+      run: npm run build # Эта команда ОБЯЗАТЕЛЬНО должна создать папку ./dist
 
     - name: Deploy dist folder to Selectel S3
       env:
@@ -32,11 +32,5 @@ jobs:
         AWS_DEFAULT_REGION: ru-7
       run: |
         aws s3 sync ./dist s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
-          --endpoint-url=https://selcloud.ru \
-          --delete
-
-    - name: Deploy dist folder to Selectel S3
-      run: |
-        aws s3 sync ./dist s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
-          --endpoint-url=https://selcloud.ru \
+          --endpoint-url=https://s3.ru-7.storage.selcloud.ru \
           --delete

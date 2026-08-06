@@ -70,7 +70,8 @@
   textarea,
   select,
   a.btn-primary,
-  a.btn-ghost {
+  a.btn-ghost,
+  a.contact-btn {
     border-radius: 0;
   }
 
@@ -101,6 +102,29 @@
       transition-colors duration-300
       hover:border-bronze/60 hover:text-bronze-light
       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .contact-buttons {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .contact-btn {
+    @apply inline-flex items-center justify-center gap-2
+      border border-white/25 px-4 py-2.5
+      font-sans text-sm font-medium tracking-wide text-paper
+      transition-colors duration-300
+      hover:border-bronze/60 hover:text-bronze-light
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .contact-btn--icon {
+    @apply size-10 shrink-0 p-0;
+  }
+
+  .section--paper .contact-btn,
+  .section--muted .contact-btn {
+    @apply border-ink/20 text-ink
+      hover:border-bronze hover:text-bronze-dark;
   }
 
   .nav-link {

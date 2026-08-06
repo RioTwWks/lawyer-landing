@@ -30,12 +30,21 @@ jobs:
       run: npm run build
 
     # Шаг 5: Берем готовую папку ./dist и синхронизируем её с бакетом Selectel
-    - name: Deploy dist folder to Selectel S3
+    - name: Deploy folder to Selectel S3
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ru-7
       run: |
-        aws s3 sync ./dist s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
-          --endpoint-url=https://selcloud.ru \
+        # Если папка dist существует — деплоим её, если нет — деплоим корень проекта (.)
+        TARGET_DIR="./dist"
+        if [ ! -d "$TARGET_DIR" ]; then
+          TARGET_DIR="."
+        fi
+        
+        aws s3 sync $TARGET_DIR s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
+          --endpoint-url=https://s3.ru-7.storage.selcloud.ru \
+          --exclude ".git*" \
+          --exclude ".github*" \
+          --exclude "node_modules*" \
           --delete

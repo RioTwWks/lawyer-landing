@@ -1,0 +1,39 @@
+name: Build and Deploy to Selectel S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build # Vite соберет проект в папку ./dist
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
+        aws-region: ru-7 # Поменяли на ru-7 под ваш бакет
+
+    - name: Deploy dist folder to Selectel S3
+      run: |
+        aws s3 sync ./dist s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
+          --endpoint-url=https://selcloud.ru \
+          --delete

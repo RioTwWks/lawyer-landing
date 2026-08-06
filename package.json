@@ -4,7 +4,11 @@
   "private": true,
   "description": "Одностраничный лендинг частного юриста (статика для Selectel S3)",
   "scripts": {
-    "dev": "./bin/tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
-    "build": "./bin/tailwindcss -i ./css/input.css -o ./css/styles.css --minify"
+    "dev": "npx @tailwindcss/cli -i ./css/input.css -o ./css/styles.css --watch",
+    "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/styles.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
   }
 }

@@ -36,15 +36,16 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ru-7
       run: |
-        # Если папка dist существует — деплоим её, если нет — деплоим корень проекта (.)
         TARGET_DIR="./dist"
         if [ ! -d "$TARGET_DIR" ]; then
           TARGET_DIR="."
         fi
         
+        # Добавили флаг --no-verify-ssl, чтобы проигнорировать проблему с цепочкой сертификатов
         aws s3 sync $TARGET_DIR s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
           --endpoint-url=https://s3.ru-7.storage.selcloud.ru \
           --exclude ".git*" \
           --exclude ".github*" \
           --exclude "node_modules*" \
+          --no-verify-ssl \
           --delete

@@ -213,6 +213,102 @@
     @apply text-bronze-light/70;
   }
 
+  /* Плейсхолдер под фото / картинку — заменяется на <img> при наполнении */
+  .img-placeholder {
+    @apply relative flex w-full flex-col items-center justify-center overflow-hidden
+      border border-dashed border-ink/20 bg-ink/[0.03] text-center;
+    background-image:
+      linear-gradient(
+        135deg,
+        transparent 48%,
+        color-mix(in srgb, var(--color-ink) 6%, transparent) 49%,
+        color-mix(in srgb, var(--color-ink) 6%, transparent) 51%,
+        transparent 52%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 48%,
+        color-mix(in srgb, var(--color-ink) 6%, transparent) 49%,
+        color-mix(in srgb, var(--color-ink) 6%, transparent) 51%,
+        transparent 52%
+      );
+    background-size: 1.5rem 1.5rem;
+  }
+
+  .section--navy .img-placeholder,
+  .section--navy-deep .img-placeholder {
+    @apply border-white/20 bg-white/[0.04] text-paper/50;
+    background-image:
+      linear-gradient(
+        135deg,
+        transparent 48%,
+        color-mix(in srgb, white 7%, transparent) 49%,
+        color-mix(in srgb, white 7%, transparent) 51%,
+        transparent 52%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 48%,
+        color-mix(in srgb, white 7%, transparent) 49%,
+        color-mix(in srgb, white 7%, transparent) 51%,
+        transparent 52%
+      );
+    background-size: 1.5rem 1.5rem;
+  }
+
+  .img-placeholder--portrait {
+    aspect-ratio: 3 / 4;
+    min-height: 18rem;
+  }
+
+  .img-placeholder--landscape {
+    aspect-ratio: 4 / 3;
+  }
+
+  .img-placeholder--wide {
+    aspect-ratio: 16 / 9;
+  }
+
+  .img-placeholder--square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .img-placeholder__icon {
+    @apply mb-3 text-ink/25;
+  }
+
+  .section--navy .img-placeholder__icon,
+  .section--navy-deep .img-placeholder__icon {
+    @apply text-paper/25;
+  }
+
+  .img-placeholder__label {
+    @apply text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-dark;
+  }
+
+  .section--navy .img-placeholder__label,
+  .section--navy-deep .img-placeholder__label {
+    @apply text-bronze-light/70;
+  }
+
+  .img-placeholder__hint {
+    @apply mt-1 max-w-[12rem] text-xs leading-relaxed text-ink-soft;
+  }
+
+  .section--navy .img-placeholder__hint,
+  .section--navy-deep .img-placeholder__hint {
+    @apply text-paper/35;
+  }
+
+  .img-placeholder__path {
+    @apply mt-2 font-mono text-[0.6rem] tracking-wide text-ink/30;
+  }
+
+  .section--navy .img-placeholder__path,
+  .section--navy-deep .img-placeholder__path {
+    @apply text-paper/25;
+  }
+
   .grid-services {
     @apply grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3;
   }

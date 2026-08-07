@@ -630,21 +630,16 @@
         </header>
 
         <div class="section-body grid-reviews">
-          <blockquote class="reveal flex flex-col gap-4" data-reveal data-reveal-delay="80">
-            <div
-              class="img-placeholder img-placeholder--square w-16 shrink-0"
-              data-img-slot="review-avatar-01"
-              role="img"
-              aria-label="Место под фото автора отзыва 01"
-            >
-              <svg class="img-placeholder__icon size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </div>
-            <div class="slot">
-              <span class="slot__label">Отзыв 01</span>
-              Цитата · имя · роль / компания
-            </div>
+          <blockquote class="review-card reveal" data-reveal data-reveal-delay="80" cite="https://uslugi.yandex.ru/profile/InnaBozhko-679197">
+            <p class="review-card__text">
+              «Огромное спасибо за сотрудничество, за ваш Инна профессионализм, за Вашу работу,
+              итоги которой превзошли все ожидания.»
+            </p>
+            <footer class="review-card__meta">
+              <cite class="not-italic">RE:INO</cite>
+              <time datetime="2024-01-26">26 января 2024</time>
+              <span class="review-card__source">Яндекс Услуги</span>
+            </footer>
           </blockquote>
           <blockquote class="reveal flex flex-col gap-4" data-reveal data-reveal-delay="140">
             <div

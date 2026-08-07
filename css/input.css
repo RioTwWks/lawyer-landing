@@ -337,6 +337,22 @@
     @apply grid gap-8 md:grid-cols-2 lg:grid-cols-3;
   }
 
+  .review-card {
+    @apply border border-ink/10 bg-paper px-5 py-6;
+  }
+
+  .review-card__text {
+    @apply font-display text-lg leading-relaxed text-navy-900;
+  }
+
+  .review-card__meta {
+    @apply mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-ink-soft;
+  }
+
+  .review-card__source {
+    @apply normal-case tracking-normal text-ink-muted;
+  }
+
   .site-footer {
     @apply border-t border-white/10 bg-navy-950 py-10 text-paper/50;
   }

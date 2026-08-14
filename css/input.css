@@ -353,6 +353,22 @@
     @apply normal-case tracking-normal text-ink-muted;
   }
 
+  .case-card {
+    @apply border border-white/10 px-5 py-6;
+  }
+
+  .case-card__title {
+    @apply mt-2 font-display text-lg font-medium leading-snug text-paper;
+  }
+
+  .case-card__text {
+    @apply mt-3 text-sm leading-relaxed text-paper/60;
+  }
+
+  .case-card__result {
+    @apply mt-4 text-xs font-medium uppercase tracking-[0.16em] text-bronze-light;
+  }
+
   .site-footer {
     @apply border-t border-white/10 bg-navy-950 py-10 text-paper/50;
   }

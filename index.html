@@ -19,6 +19,24 @@
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="icon-max" viewBox="0 0 1000 1000">
+      <defs>
+        <linearGradient id="max-icon-grad" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#44ccff"/>
+          <stop offset="0.662" stop-color="#5533ee"/>
+          <stop offset="1" stop-color="#9933dd"/>
+        </linearGradient>
+        <radialGradient id="max-icon-rad" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3) scale(2.42703433 1)" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#0000ff"/>
+          <stop offset="1" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1000" height="1000" fill="url(#max-icon-grad)" ry="249.681"/>
+      <rect width="1000" height="1000" fill="url(#max-icon-rad)" ry="249.681"/>
+      <path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/>
+    </symbol>
+  </svg>
   <!--
     Карта секций (фундамент):
     #top / hero → #about → #services → #process → #cases → #credentials → #reviews → #contact → footer
@@ -54,23 +72,23 @@
         <div class="contact-buttons hidden md:flex" aria-label="Способы связи">
           <a
             class="contact-btn contact-btn--icon"
-            href="tel:+73832552774"
-            aria-label="Позвонить"
+            href="https://t.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Написать в Telegram"
           >
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293a1.125 1.125 0 0 1-1.21.47 12.035 12.035 0 0 1-7.143-7.143 1.125 1.125 0 0 1 .47-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.488.02.941-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
             </svg>
           </a>
           <a
             class="contact-btn contact-btn--icon"
-            href="https://wa.me/79139020977"
+            href="https://max.ru/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Написать в WhatsApp"
+            aria-label="Написать в MAX"
           >
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
+            <svg class="size-4 shrink-0" viewBox="0 0 1000 1000" aria-hidden="true"><use href="#icon-max"/></svg>
           </a>
           <a
             class="contact-btn contact-btn--icon"
@@ -126,33 +144,25 @@
         <a class="nav-link py-3" href="#reviews">Отзывы</a>
         <a class="nav-link py-3" href="#contact">Контакты</a>
         <div class="contact-buttons mt-3 flex-col sm:flex-row">
-          <a class="contact-btn w-full sm:w-auto" href="tel:+73832552774">
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293a1.125 1.125 0 0 1-1.21.47 12.035 12.035 0 0 1-7.143-7.143 1.125 1.125 0 0 1 .47-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-            </svg>
-            Позвонить
-          </a>
           <a
             class="contact-btn w-full sm:w-auto"
-            href="https://wa.me/79139020977"
+            href="https://t.me/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.488.02.941-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
             </svg>
-            WhatsApp
+            Telegram
           </a>
           <a
             class="contact-btn w-full sm:w-auto"
-            href="https://uslugi.yandex.ru/profile/InnaBozhko-679197"
+            href="https://max.ru/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-            </svg>
-            Яндекс Услуги
+            <svg class="size-4 shrink-0" viewBox="0 0 1000 1000" aria-hidden="true"><use href="#icon-max"/></svg>
+            MAX
           </a>
           <a class="contact-btn w-full sm:w-auto" href="mailto:bia151@yandex.ru">
             <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
@@ -188,19 +198,15 @@
         aria-hidden="true"
       >
         <div class="relative mx-auto h-full max-w-content px-5 sm:px-8 lg:px-10">
-          <div
-            class="img-placeholder img-placeholder--portrait absolute right-5 top-1/2 w-[min(22rem,28vw)] -translate-y-1/2 sm:right-8 lg:right-10"
-            data-img-slot="hero-portrait"
-            role="img"
-            aria-label="Место под портретное фото в первом экране"
-          >
-            <svg class="img-placeholder__icon size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-              <circle cx="8.25" cy="8.25" r="1.5" fill="currentColor" stroke="none" />
-            </svg>
-            <span class="img-placeholder__label">Hero · портрет</span>
-            <span class="img-placeholder__path">images/hero-portrait.jpg</span>
-          </div>
+          <img
+            src="./images/portret.webp"
+            alt="Инна Божко — юрист"
+            class="portrait-img portrait-img--hero absolute right-5 top-1/2 w-[min(22rem,28vw)] -translate-y-1/2 sm:right-8 lg:right-10"
+            width="352"
+            height="469"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
 
@@ -291,20 +297,15 @@
 
         <div class="section-body grid gap-8 lg:grid-cols-12 lg:gap-12">
           <figure class="reveal lg:col-span-5" data-reveal data-reveal-delay="80">
-            <div
-              class="img-placeholder img-placeholder--portrait"
-              data-img-slot="about-portrait"
-              role="img"
-              aria-label="Место под портретное фото юриста"
-            >
-              <svg class="img-placeholder__icon size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-                <circle cx="8.25" cy="8.25" r="1.5" fill="currentColor" stroke="none" />
-              </svg>
-              <span class="img-placeholder__label">Фото / портрет</span>
-              <span class="img-placeholder__hint">Строгое портретное изображение, без карточки</span>
-              <span class="img-placeholder__path">images/about-portrait.jpg</span>
-            </div>
+            <img
+              src="./images/portret.webp"
+              alt="Инна Божко — юрист"
+              class="portrait-img w-full"
+              width="480"
+              height="640"
+              loading="lazy"
+              decoding="async"
+            />
             <figcaption class="sr-only">Портрет Инны Божко</figcaption>
           </figure>
 
@@ -536,7 +537,7 @@
         </header>
 
         <div class="section-body grid-reviews">
-          <blockquote class="review-card reveal" data-reveal data-reveal-delay="80" cite="https://uslugi.yandex.ru/profile/InnaBozhko-679197">
+          <blockquote class="review-card reveal" data-reveal data-reveal-delay="80">
             <p class="review-card__text">
               «Огромное спасибо за сотрудничество, за ваш Инна профессионализм, за Вашу работу,
               итоги которой превзошли все ожидания.»
@@ -544,7 +545,6 @@
             <footer class="review-card__meta">
               <cite class="not-italic">RE:INO</cite>
               <time datetime="2024-01-26">26 января 2024</time>
-              <span class="review-card__source">Яндекс Услуги</span>
             </footer>
           </blockquote>
           <blockquote class="review-card reveal" data-reveal data-reveal-delay="140">
@@ -622,14 +622,23 @@
                 </a>
                 <a
                   class="contact-btn"
-                  href="https://uslugi.yandex.ru/profile/InnaBozhko-679197"
+                  href="https://t.me/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.488.02.941-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                   </svg>
-                  Яндекс Услуги
+                  Telegram
+                </a>
+                <a
+                  class="contact-btn"
+                  href="https://max.ru/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="size-4 shrink-0" viewBox="0 0 1000 1000" aria-hidden="true"><use href="#icon-max"/></svg>
+                  MAX
                 </a>
                 <a class="contact-btn" href="mailto:bia151@yandex.ru">
                   <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">

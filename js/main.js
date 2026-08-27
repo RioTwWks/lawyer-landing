@@ -6,6 +6,11 @@
   const menuIconClose = document.querySelector('[data-icon-close]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const lightbox = document.querySelector('[data-lightbox]');
+  const lightboxImg = document.querySelector('[data-lightbox-img]');
+  let lightboxSource = null;
+  let lightboxClosing = false;
+
   const setMenuOpen = (open) => {
     if (!mobileNav || !menuBtn) return;
     mobileNav.hidden = !open;
@@ -14,6 +19,106 @@
     document.body.classList.toggle('overflow-hidden', open);
     if (menuIconOpen) menuIconOpen.hidden = open;
     if (menuIconClose) menuIconClose.hidden = !open;
+  };
+
+  const fitLightboxSize = (naturalW, naturalH) => {
+    const maxW = Math.min(window.innerWidth * 0.92, 1100);
+    const maxH = window.innerHeight * 0.88;
+    const scale = Math.min(maxW / naturalW, maxH / naturalH, 1);
+    const width = Math.max(1, naturalW * scale);
+    const height = Math.max(1, naturalH * scale);
+    return {
+      width,
+      height,
+      left: (window.innerWidth - width) / 2,
+      top: (window.innerHeight - height) / 2,
+    };
+  };
+
+  const applyRect = (el, rect) => {
+    el.style.top = `${rect.top}px`;
+    el.style.left = `${rect.left}px`;
+    el.style.width = `${rect.width}px`;
+    el.style.height = `${rect.height}px`;
+  };
+
+  const openLightbox = (trigger) => {
+    if (!lightbox || !lightboxImg || lightboxClosing) return;
+    const sourceImg = trigger.querySelector('img');
+    if (!sourceImg?.src) return;
+
+    lightboxSource = trigger;
+    trigger.classList.add('is-active');
+    lightboxImg.src = sourceImg.currentSrc || sourceImg.src;
+    lightboxImg.alt = sourceImg.alt || '';
+
+    const start = sourceImg.getBoundingClientRect();
+    lightbox.hidden = false;
+    document.body.classList.add('overflow-hidden');
+    applyRect(lightboxImg, start);
+
+    const runOpen = () => {
+      const nw = lightboxImg.naturalWidth || sourceImg.naturalWidth || start.width;
+      const nh = lightboxImg.naturalHeight || sourceImg.naturalHeight || start.height;
+      const end = fitLightboxSize(nw, nh);
+
+      requestAnimationFrame(() => {
+        lightbox.classList.add('is-open');
+        if (reduceMotion) {
+          applyRect(lightboxImg, end);
+          return;
+        }
+        requestAnimationFrame(() => applyRect(lightboxImg, end));
+      });
+    };
+
+    if (lightboxImg.complete && lightboxImg.naturalWidth) runOpen();
+    else lightboxImg.addEventListener('load', runOpen, { once: true });
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxImg || lightbox.hidden || lightboxClosing) return;
+    lightboxClosing = true;
+
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      lightbox.classList.remove('is-open');
+      lightbox.hidden = true;
+      lightboxImg.removeAttribute('src');
+      lightboxImg.alt = '';
+      lightboxImg.style.top = '';
+      lightboxImg.style.left = '';
+      lightboxImg.style.width = '';
+      lightboxImg.style.height = '';
+      lightboxSource?.classList.remove('is-active');
+      lightboxSource?.focus({ preventScroll: true });
+      lightboxSource = null;
+      document.body.classList.remove('overflow-hidden');
+      lightboxClosing = false;
+    };
+
+    const sourceImg = lightboxSource?.querySelector('img');
+    const endRect = sourceImg?.getBoundingClientRect();
+
+    lightbox.classList.remove('is-open');
+
+    if (!endRect || reduceMotion) {
+      finish();
+      return;
+    }
+
+    applyRect(lightboxImg, endRect);
+
+    const onEnd = (event) => {
+      if (event.target !== lightboxImg) return;
+      lightboxImg.removeEventListener('transitionend', onEnd);
+      finish();
+    };
+
+    lightboxImg.addEventListener('transitionend', onEnd);
+    window.setTimeout(finish, 500);
   };
 
   menuBtn?.addEventListener('click', () => {
@@ -26,7 +131,12 @@
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMenuOpen(false);
+    if (event.key !== 'Escape') return;
+    if (lightbox && !lightbox.hidden) {
+      closeLightbox();
+      return;
+    }
+    setMenuOpen(false);
   });
 
   const syncHeader = () => {
@@ -94,6 +204,14 @@
   } else {
     reveals.forEach((el) => showReveal(el));
   }
+
+  document.querySelectorAll('[data-lightbox-open]').forEach((btn) => {
+    btn.addEventListener('click', () => openLightbox(btn));
+  });
+
+  lightbox?.querySelectorAll('[data-lightbox-close]').forEach((el) => {
+    el.addEventListener('click', closeLightbox);
+  });
 
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());

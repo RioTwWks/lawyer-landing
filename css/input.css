@@ -334,7 +334,97 @@
   }
 
   .grid-credentials {
-    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+    @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8;
+  }
+
+  .credential {
+    @apply flex flex-col gap-3;
+  }
+
+  .credential__link {
+    @apply block w-full cursor-pointer overflow-hidden border border-ink/10 bg-paper p-0 text-left transition duration-300;
+    cursor: zoom-in;
+  }
+
+  .credential__link:hover,
+  .credential__link:focus-visible {
+    @apply border-bronze/50;
+  }
+
+  .credential__link.is-active {
+    @apply opacity-0;
+  }
+
+  .credential__img {
+    @apply aspect-[4/3] w-full object-contain object-center bg-[color-mix(in_srgb,var(--color-paper)_92%,var(--color-ink)_8%)];
+  }
+
+  .credential__img--portrait {
+    @apply aspect-[3/4] sm:aspect-[4/3];
+  }
+
+  .credential__caption {
+    @apply flex flex-col gap-0.5;
+  }
+
+  .credential__title {
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.16em] text-navy-900;
+  }
+
+  .credential__meta {
+    @apply text-sm text-ink-soft;
+  }
+
+  .lightbox {
+    @apply fixed inset-0 z-[80];
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox__backdrop {
+    @apply absolute inset-0 border-0 bg-navy-950/80 opacity-0 transition-opacity duration-400 ease-[var(--ease-out-expo)];
+  }
+
+  .lightbox.is-open .lightbox__backdrop {
+    @apply opacity-100;
+  }
+
+  .lightbox__img {
+    position: fixed;
+    z-index: 1;
+    margin: 0;
+    max-width: none;
+    object-fit: contain;
+    box-shadow: 0 24px 80px rgb(0 0 0 / 0.45);
+    transition:
+      top 0.45s var(--ease-out-expo),
+      left 0.45s var(--ease-out-expo),
+      width 0.45s var(--ease-out-expo),
+      height 0.45s var(--ease-out-expo);
+    will-change: top, left, width, height;
+  }
+
+  .lightbox__close {
+    @apply absolute right-4 top-4 z-[2] flex size-11 items-center justify-center border border-white/20 bg-navy-950/60 text-paper opacity-0 backdrop-blur-sm transition duration-300;
+  }
+
+  .lightbox.is-open .lightbox__close {
+    @apply opacity-100;
+  }
+
+  .lightbox__close:hover,
+  .lightbox__close:focus-visible {
+    @apply border-bronze-light/50 text-bronze-light;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox__backdrop,
+    .lightbox__img,
+    .lightbox__close {
+      transition: none;
+    }
   }
 
   .grid-reviews {

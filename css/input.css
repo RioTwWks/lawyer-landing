@@ -265,6 +265,36 @@
     @apply aspect-[3/4] w-full object-cover object-top;
   }
 
+  .hero-portrait {
+    @apply aspect-[3/4] object-cover object-top shadow-[0_24px_60px_-20px_rgba(0,0,0,0.55)];
+  }
+
+  .portrait-gallery {
+    @apply grid grid-cols-4 gap-2;
+  }
+
+  .portrait-gallery__link {
+    @apply block w-full cursor-pointer overflow-hidden border border-ink/10 bg-paper p-0 text-left transition duration-300;
+    cursor: zoom-in;
+  }
+
+  .portrait-gallery__link--featured {
+    @apply border-0;
+  }
+
+  .portrait-gallery__link:hover,
+  .portrait-gallery__link:focus-visible {
+    @apply border-bronze/50;
+  }
+
+  .portrait-gallery__link.is-active {
+    @apply opacity-0;
+  }
+
+  .portrait-gallery__img {
+    @apply aspect-[3/4] w-full object-cover object-top;
+  }
+
   .img-placeholder--landscape {
     aspect-ratio: 4 / 3;
   }

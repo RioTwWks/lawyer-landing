@@ -198,19 +198,15 @@
         aria-hidden="true"
       >
         <div class="relative mx-auto h-full max-w-content px-5 sm:px-8 lg:px-10">
-          <div
-            class="img-placeholder img-placeholder--portrait absolute right-5 top-1/2 w-[min(22rem,28vw)] -translate-y-1/2 sm:right-8 lg:right-10"
-            data-img-slot="hero-portrait"
-            role="img"
-            aria-label="Место под портретное фото в первом экране"
-          >
-            <svg class="img-placeholder__icon size-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-              <circle cx="8.25" cy="8.25" r="1.5" fill="currentColor" stroke="none" />
-            </svg>
-            <span class="img-placeholder__label">Hero · портрет</span>
-            <span class="img-placeholder__path">images/hero-portrait.jpg</span>
-          </div>
+          <img
+            class="hero-portrait absolute right-5 top-1/2 w-[min(22rem,28vw)] -translate-y-1/2 sm:right-8 lg:right-10"
+            src="./images/hero-portrait.webp"
+            alt="Инна Божко — юрист в Новосибирске"
+            width="880"
+            height="1318"
+            decoding="async"
+            fetchpriority="high"
+          />
         </div>
       </div>
 
@@ -300,18 +296,74 @@
         </header>
 
         <div class="section-body grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <figure class="reveal lg:col-span-5" data-reveal data-reveal-delay="80">
-            <img
-              src="./images/portret.webp"
-              alt="Инна Божко — юрист"
-              class="portrait-img w-full"
-              width="480"
-              height="640"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption class="sr-only">Портрет Инны Божко</figcaption>
-          </figure>
+          <div class="flex flex-col gap-4 lg:col-span-5">
+            <figure class="reveal" data-reveal data-reveal-delay="80">
+              <button
+                class="portrait-gallery__link portrait-gallery__link--featured"
+                type="button"
+                data-lightbox-open
+                aria-label="Увеличить основной портрет"
+              >
+                <img
+                  src="./images/portret.webp"
+                  alt="Инна Божко — юрист"
+                  class="portrait-img w-full"
+                  width="960"
+                  height="1481"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <figcaption class="sr-only">Портрет Инны Божко</figcaption>
+            </figure>
+
+            <div class="portrait-gallery reveal" data-reveal data-reveal-delay="120" aria-label="Фотогалерея">
+              <button class="portrait-gallery__link" type="button" data-lightbox-open aria-label="Увеличить фото 1">
+                <img
+                  class="portrait-gallery__img"
+                  src="./images/portrait-0284.webp"
+                  alt="Инна Божко — портрет у столика на террасе"
+                  width="720"
+                  height="1080"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button class="portrait-gallery__link" type="button" data-lightbox-open aria-label="Увеличить фото 2">
+                <img
+                  class="portrait-gallery__img"
+                  src="./images/portrait-0286.webp"
+                  alt="Инна Божко — портрет на фоне зонта"
+                  width="720"
+                  height="1078"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button class="portrait-gallery__link" type="button" data-lightbox-open aria-label="Увеличить фото 3">
+                <img
+                  class="portrait-gallery__img"
+                  src="./images/portrait-0294.webp"
+                  alt="Инна Божко — деловой портрет"
+                  width="720"
+                  height="1085"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button class="portrait-gallery__link" type="button" data-lightbox-open aria-label="Увеличить фото 4">
+                <img
+                  class="portrait-gallery__img"
+                  src="./images/portrait-0302.webp"
+                  alt="Инна Божко — портрет со скрещёнными руками"
+                  width="720"
+                  height="1110"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
 
           <div class="flex flex-col gap-6 lg:col-span-7">
             <div class="slot reveal" data-reveal data-reveal-delay="120">

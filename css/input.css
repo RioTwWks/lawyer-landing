@@ -121,6 +121,39 @@
     @apply size-10 shrink-0 p-0;
   }
 
+  .messenger-list {
+    @apply flex flex-col gap-3;
+  }
+
+  .messenger-card {
+    @apply flex items-center gap-4 border border-white/15 bg-white/[0.04] px-4 py-4 transition duration-300;
+  }
+
+  .messenger-card:hover,
+  .messenger-card:focus-visible {
+    @apply border-bronze/50 bg-white/[0.07];
+  }
+
+  .messenger-card__icon {
+    @apply flex size-11 shrink-0 items-center justify-center border border-white/10 bg-navy-900/70 text-paper;
+  }
+
+  .messenger-card__body {
+    @apply min-w-0 flex-1;
+  }
+
+  .messenger-card__title {
+    @apply text-sm font-semibold tracking-wide text-paper;
+  }
+
+  .messenger-card__meta {
+    @apply mt-1 text-xs text-paper/70;
+  }
+
+  .messenger-card__arrow {
+    @apply shrink-0 text-paper/35 transition duration-300 group-hover:text-bronze-light group-hover:translate-x-0.5;
+  }
+
   .section--paper .contact-btn,
   .section--muted .contact-btn {
     @apply border-ink/20 text-ink

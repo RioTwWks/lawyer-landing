@@ -14,8 +14,8 @@
 
   /* Текст */
   --color-ink: #0f1724;
-  --color-ink-muted: #4a5568;
-  --color-ink-soft: #6b7280;
+  --color-ink-muted: #374151;
+  --color-ink-soft: #4b5563;
 
   /* Фон страницы — холодный белый, не кремовый */
   --color-paper: #f6f7f9;
@@ -183,7 +183,7 @@
 
   .section--navy .section-lead,
   .section--navy-deep .section-lead {
-    @apply text-paper/65;
+    @apply text-paper/85;
   }
 
   .section-rule {
@@ -196,12 +196,12 @@
 
   /* Слот-заглушка: видимый каркас без «карточного» UI */
   .slot {
-    @apply border border-dashed border-ink/15 px-5 py-6 text-sm text-ink-soft;
+    @apply border border-dashed border-ink/15 px-5 py-6 text-sm text-ink;
   }
 
   .section--navy .slot,
   .section--navy-deep .slot {
-    @apply border-white/15 text-paper/45;
+    @apply border-white/15 text-paper/85;
   }
 
   .slot__label {
@@ -376,7 +376,7 @@
   }
 
   .credential__meta {
-    @apply text-sm text-ink-soft;
+    @apply text-sm text-ink-muted;
   }
 
   .lightbox {
@@ -444,7 +444,7 @@
   }
 
   .review-card__meta {
-    @apply mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-ink-soft;
+    @apply mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.16em] text-ink-muted;
   }
 
   .review-card__source {
@@ -460,7 +460,7 @@
   }
 
   .case-card__text {
-    @apply mt-3 text-sm leading-relaxed text-paper/60;
+    @apply mt-3 text-sm leading-relaxed text-paper/85;
   }
 
   .case-card__result {
@@ -468,11 +468,11 @@
   }
 
   .site-footer {
-    @apply border-t border-white/10 bg-navy-950 py-10 text-paper/50;
+    @apply border-t border-white/10 bg-navy-950 py-10 text-paper/75;
   }
 
   .site-footer a {
-    @apply text-paper/70 transition-colors hover:text-bronze-light;
+    @apply text-paper/85 transition-colors hover:text-bronze-light;
   }
 
   /* Атмосфера hero: сетка + диагональный блик + виньетка */

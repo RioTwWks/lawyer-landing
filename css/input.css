@@ -146,10 +146,6 @@
     @apply text-sm font-semibold tracking-wide text-paper;
   }
 
-  .messenger-card__meta {
-    @apply mt-1 text-xs text-paper/70;
-  }
-
   .messenger-card__arrow {
     @apply shrink-0 text-paper/35 transition duration-300 group-hover:text-bronze-light group-hover:translate-x-0.5;
   }

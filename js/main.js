@@ -215,4 +215,48 @@
 
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  const casesCarousel = document.querySelector('[data-cases-carousel]');
+  const casesScroll = document.querySelector('[data-cases-scroll]');
+  const casesPrev = document.querySelector('[data-cases-prev]');
+  const casesNext = document.querySelector('[data-cases-next]');
+
+  if (casesCarousel && casesScroll && casesPrev && casesNext) {
+    const getCasesStep = () => {
+      const card = casesScroll.querySelector('.case-card');
+      if (!card) return casesScroll.clientWidth;
+      const track = casesScroll.querySelector('.cases-scroll__track');
+      const gap = track ? parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 24 : 24;
+      return card.offsetWidth + gap;
+    };
+
+    const syncCasesButtons = () => {
+      const maxScroll = casesScroll.scrollWidth - casesScroll.clientWidth;
+      casesPrev.disabled = casesScroll.scrollLeft <= 1;
+      casesNext.disabled = maxScroll <= 1 || casesScroll.scrollLeft >= maxScroll - 1;
+    };
+
+    const scrollCases = (direction) => {
+      casesScroll.scrollBy({
+        left: direction * getCasesStep(),
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
+    };
+
+    casesPrev.addEventListener('click', () => scrollCases(-1));
+    casesNext.addEventListener('click', () => scrollCases(1));
+    casesScroll.addEventListener('scroll', syncCasesButtons, { passive: true });
+    window.addEventListener('resize', syncCasesButtons, { passive: true });
+    casesScroll.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        scrollCases(-1);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        scrollCases(1);
+      }
+    });
+    syncCasesButtons();
+  }
 })();

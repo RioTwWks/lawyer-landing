@@ -427,13 +427,26 @@
           <h2 id="cases-title" class="section-title">Наши кейсы</h2>
           <div class="section-rule" aria-hidden="true"></div>
           <p class="section-lead">
-            Примеры дел из судебной практики. Листайте карточки горизонтально.
+            Примеры дел из судебной практики. Листайте карточки стрелками.
           </p>
         </header>
 
         <div class="section-body reveal" data-reveal data-reveal-delay="80">
-          <div class="cases-scroll" tabindex="0" role="region" aria-label="Кейсы, горизонтальная прокрутка">
-            <div class="cases-scroll__track">
+          <div class="cases-carousel" data-cases-carousel>
+            <button
+              class="cases-carousel__btn"
+              type="button"
+              data-cases-prev
+              aria-label="Предыдущий кейс"
+              disabled
+            >
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+
+            <div class="cases-scroll" data-cases-scroll tabindex="0" role="region" aria-label="Кейсы">
+              <div class="cases-scroll__track">
               <article class="case-card">
                 <span class="slot__label">Арбитраж · А45-23146/2014</span>
                 <h3 class="case-card__title">Оспаривание схемы земельного участка</h3>
@@ -572,6 +585,18 @@
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
             </div>
+            </div>
+
+            <button
+              class="cases-carousel__btn"
+              type="button"
+              data-cases-next
+              aria-label="Следующий кейс"
+            >
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

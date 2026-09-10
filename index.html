@@ -48,28 +48,29 @@
     data-header
     class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[scrolled]:border-white/10"
   >
-    <div class="container-page flex h-[var(--header-h)] items-center justify-between gap-6">
-      <a href="#top" class="group flex min-w-0 flex-col leading-none">
-        <span class="font-display text-xl font-semibold tracking-[0.04em] text-paper sm:text-2xl">
+    <div class="container-page flex h-[var(--header-h)] items-center justify-between gap-3 lg:gap-4">
+      <a href="#top" class="group flex shrink-0 items-center gap-2 whitespace-nowrap leading-none">
+        <span class="font-display text-xl font-semibold tracking-[0.04em] text-paper lg:text-2xl">
           Дело Правое
         </span>
-        <span class="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-bronze-light/90">
+        <span class="hidden h-3 w-px shrink-0 bg-white/20 2xl:block" aria-hidden="true"></span>
+        <span class="hidden shrink-0 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-light/90 2xl:inline">
           Юридическая компания · Новосибирск
         </span>
       </a>
 
-      <nav class="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Основная навигация">
-        <a class="nav-link" href="#about">О компании</a>
-        <a class="nav-link" href="#services">Услуги</a>
-        <a class="nav-link" href="#process">Как работаем</a>
-        <a class="nav-link" href="#cases">Кейсы</a>
-        <a class="nav-link" href="#credentials">Дипломы</a>
-        <a class="nav-link" href="#reviews">Отзывы</a>
-        <a class="nav-link" href="#contact">Контакты</a>
+      <nav class="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-3 xl:gap-5 lg:flex" aria-label="Основная навигация">
+        <a class="nav-link whitespace-nowrap" href="#about">О компании</a>
+        <a class="nav-link whitespace-nowrap" href="#services">Услуги</a>
+        <a class="nav-link whitespace-nowrap" href="#process">Как работаем</a>
+        <a class="nav-link whitespace-nowrap" href="#cases">Кейсы</a>
+        <a class="nav-link whitespace-nowrap" href="#credentials">Дипломы</a>
+        <a class="nav-link whitespace-nowrap" href="#reviews">Отзывы</a>
+        <a class="nav-link whitespace-nowrap" href="#contact">Контакты</a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <div class="contact-buttons hidden md:flex" aria-label="Способы связи">
+      <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div class="contact-buttons contact-buttons--header hidden md:flex" aria-label="Способы связи">
           <a
             class="contact-btn contact-btn--icon"
             href="https://t.me/BozkoInna"

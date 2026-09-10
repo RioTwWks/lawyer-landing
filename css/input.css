@@ -108,6 +108,10 @@
     @apply flex flex-wrap gap-2;
   }
 
+  .contact-buttons--header {
+    @apply flex-nowrap gap-1.5 sm:gap-2;
+  }
+
   .contact-btn {
     @apply inline-flex items-center justify-center gap-2
       border border-white/25 px-4 py-2.5
@@ -157,7 +161,7 @@
   }
 
   .nav-link {
-    @apply text-sm font-medium tracking-wide text-paper/80
+    @apply shrink-0 text-xs font-medium tracking-wide text-paper/80 xl:text-sm
       transition-colors duration-200
       hover:text-bronze-light
       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-bronze;

@@ -394,6 +394,26 @@
     @apply grid gap-8 lg:grid-cols-3;
   }
 
+  .cases-scroll {
+    @apply -mx-5 overflow-x-auto overscroll-x-contain px-5 pb-2 sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10;
+    scroll-snap-type: x proximity;
+    scrollbar-color: color-mix(in srgb, var(--color-bronze) 45%, transparent) transparent;
+    scrollbar-width: thin;
+  }
+
+  .cases-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .cases-scroll::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-bronze) 45%, transparent);
+    border-radius: 999px;
+  }
+
+  .cases-scroll__track {
+    @apply flex w-max gap-6;
+  }
+
   .grid-credentials {
     @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8;
   }
@@ -509,7 +529,7 @@
   }
 
   .case-card {
-    @apply border border-white/10 px-5 py-6;
+    @apply flex w-[min(85vw,20rem)] shrink-0 snap-start flex-col border border-white/10 px-5 py-6 sm:w-[22rem] lg:w-[24rem];
   }
 
   .case-card__title {
@@ -521,7 +541,7 @@
   }
 
   .case-card__result {
-    @apply mt-4 text-xs font-medium uppercase tracking-[0.16em] text-bronze-light;
+    @apply mt-auto pt-4 text-xs font-medium uppercase tracking-[0.16em] text-bronze-light;
   }
 
   .site-footer {

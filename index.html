@@ -427,27 +427,39 @@
           <h2 id="cases-title" class="section-title">Наши кейсы</h2>
           <div class="section-rule" aria-hidden="true"></div>
           <p class="section-lead">
-            Примеры дел из судебной практики. Листайте карточки стрелками.
+            Примеры дел из судебной практики — выберите категорию.
           </p>
         </header>
 
         <div class="section-body reveal" data-reveal data-reveal-delay="80">
-          <div class="cases-carousel" data-cases-carousel>
+          <div class="cases-tabs" data-cases-tabs role="tablist" aria-label="Категории кейсов">
             <button
-              class="cases-carousel__btn"
+              class="cases-tab"
               type="button"
-              data-cases-prev
-              aria-label="Предыдущий кейс"
-              disabled
+              role="tab"
+              id="cases-tab-business"
+              aria-selected="true"
+              aria-controls="cases-panel"
+              data-cases-filter="business"
             >
-              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
+              Для бизнеса (Арбитраж)
             </button>
+            <button
+              class="cases-tab"
+              type="button"
+              role="tab"
+              id="cases-tab-citizens"
+              aria-selected="false"
+              aria-controls="cases-panel"
+              data-cases-filter="citizens"
+              tabindex="-1"
+            >
+              Для граждан
+            </button>
+          </div>
 
-            <div class="cases-scroll" data-cases-scroll tabindex="0" role="region" aria-label="Кейсы">
-              <div class="cases-scroll__track">
-              <article class="case-card">
+          <div class="cases-grid" id="cases-panel" role="tabpanel" aria-labelledby="cases-tab-business" data-cases-panel>
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-23146/2014</span>
                 <h3 class="case-card__title">Оспаривание схемы земельного участка</h3>
                 <p class="case-card__text">
@@ -456,7 +468,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-13415/2015</span>
                 <h3 class="case-card__title">Аренда земельного участка</h3>
                 <p class="case-card__text">
@@ -466,7 +478,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-24905/2017</span>
                 <h3 class="case-card__title">Задолженность за содержание МОП</h3>
                 <p class="case-card__text">
@@ -474,7 +486,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-22821/2014</span>
                 <h3 class="case-card__title">Запрет реконструкции кровли</h3>
                 <p class="case-card__text">
@@ -483,7 +495,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-5692/2015</span>
                 <h3 class="case-card__title">Спор по договору подряда</h3>
                 <p class="case-card__text">
@@ -494,7 +506,7 @@
                   Первоначальный иск удовлетворён полностью, встречный — частично
                 </p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А45-18325/2016</span>
                 <h3 class="case-card__title">Освобождение имущества от ареста</h3>
                 <p class="case-card__text">
@@ -503,7 +515,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="business">
                 <span class="slot__label">Арбитраж · А03-19356/2016</span>
                 <h3 class="case-card__title">Оспаривание решения общего собрания</h3>
                 <p class="case-card__text">
@@ -513,7 +525,7 @@
                 </p>
                 <p class="case-card__result">В удовлетворении требования отказано</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Областной суд · 4А-720/2016</span>
                 <h3 class="case-card__title">Административное правонарушение ГСК «Вездеход-2»</h3>
                 <p class="case-card__text">
@@ -522,7 +534,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено, производство прекращено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Областной суд · 33-10165/2017</span>
                 <h3 class="case-card__title">Перерасчёт пенсии</h3>
                 <p class="case-card__text">
@@ -531,7 +543,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Областной суд · 33-3234/2017</span>
                 <h3 class="case-card__title">Страховой спор с ОАО «АльфаСтрахование»</h3>
                 <p class="case-card__text">
@@ -539,7 +551,7 @@
                 </p>
                 <p class="case-card__result">В иске ОАО «АльфаСтрахование» отказано</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Областной суд · 33-11381/2017</span>
                 <h3 class="case-card__title">Страховое возмещение по кредиту</h3>
                 <p class="case-card__text">
@@ -548,7 +560,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Гражданское · 2-2391/2017</span>
                 <h3 class="case-card__title">Доля в квартире</h3>
                 <p class="case-card__text">
@@ -557,7 +569,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Гражданское · 2-4084/2016</span>
                 <h3 class="case-card__title">Спор с «Турецкими авиалиниями»</h3>
                 <p class="case-card__text">
@@ -566,7 +578,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Гражданское · 2-105/2016</span>
                 <h3 class="case-card__title">Спор с авиакомпанией</h3>
                 <p class="case-card__text">
@@ -575,7 +587,7 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-              <article class="case-card">
+              <article class="case-card" data-case-category="citizens">
                 <span class="slot__label">Гражданское · 2-256/2017</span>
                 <h3 class="case-card__title">Долевое строительство</h3>
                 <p class="case-card__text">
@@ -584,19 +596,6 @@
                 </p>
                 <p class="case-card__result">Требование удовлетворено</p>
               </article>
-            </div>
-            </div>
-
-            <button
-              class="cases-carousel__btn"
-              type="button"
-              data-cases-next
-              aria-label="Следующий кейс"
-            >
-              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -749,7 +748,7 @@
             <ul class="space-y-4 text-sm text-paper/85">
               <li class="slot border-white/10">
                 <span class="slot__label">Адрес</span>
-                г. Новосибирск, ул. Серебренниковская, 13
+                630007, г. Новосибирск, ул. Серебренниковская, д. 4/1, кв. 263
               </li>
               <li class="slot border-white/10">
                 <span class="slot__label">Время работы</span>
@@ -763,10 +762,26 @@
               </li>
               <li class="slot border-white/10">
                 <span class="slot__label">Email</span>
-                <a class="block" href="mailto:bia151@yandex.ru">bia151@yandex.ru</a>
-                <a class="mt-2 block" href="mailto:k.e@plus1.expert">k.e@plus1.expert</a>
+                <span class="contact-emails">
+                  <a href="mailto:bia151@yandex.ru">bia151@yandex.ru</a>
+                  <span class="contact-emails__sep" aria-hidden="true">·</span>
+                  <a href="mailto:k.e@plus1.expert">k.e@plus1.expert</a>
+                </span>
               </li>
             </ul>
+          </div>
+
+          <div class="contact-map mt-10">
+            <p class="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-bronze-light/70">
+              Как нас найти
+            </p>
+            <iframe
+              class="contact-map__frame"
+              title="Офис ООО «Дело Правое» на карте"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A1%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%204%2F1&z=17&l=map"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -784,6 +799,8 @@
         <a href="#about">О компании</a>
         <a href="#services">Услуги</a>
         <a href="#contact">Контакты</a>
+        <a href="./novoe-v-zakonodatelstve.html">Новое в законодательстве</a>
+        <a href="./sudebnaya-praktika.html">Судебная практика</a>
         <a href="#privacy">Политика конфиденциальности</a>
       </div>
       <p class="text-xs">© <span data-year>2026</span> ООО «Дело Правое»</p>

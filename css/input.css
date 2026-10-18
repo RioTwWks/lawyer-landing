@@ -132,6 +132,30 @@
     @apply flex shrink-0 items-center gap-2 sm:gap-3;
   }
 
+  .contact-emails {
+    @apply flex flex-wrap items-center gap-x-3 gap-y-1 sm:flex-nowrap;
+  }
+
+  .contact-emails__sep {
+    @apply shrink-0 text-paper/35;
+  }
+
+  .site-header-simple {
+    @apply border-b border-ink/10 bg-paper;
+  }
+
+  .site-header-simple .site-header__tagline {
+    @apply text-bronze-dark/90;
+  }
+
+  .journal-page {
+    @apply min-h-[calc(100dvh-var(--header-h)-8rem)];
+  }
+
+  .journal-placeholder {
+    @apply mt-8;
+  }
+
   .contact-btn {
     @apply inline-flex items-center justify-center gap-2
       border border-white/25 px-4 py-2.5
@@ -394,30 +418,30 @@
     @apply grid gap-8 lg:grid-cols-3;
   }
 
-  .cases-carousel {
-    @apply flex items-center gap-3 sm:gap-4;
+  .cases-tabs {
+    @apply mb-8 flex flex-wrap gap-2;
   }
 
-  .cases-scroll {
-    @apply min-w-0 flex-1 overflow-x-auto overscroll-x-contain;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  .cases-tab {
+    @apply border border-white/20 px-4 py-2.5 text-left text-sm font-medium tracking-wide text-paper/80 transition-colors
+      hover:border-bronze/50 hover:text-bronze-light
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
   }
 
-  .cases-scroll::-webkit-scrollbar {
+  .cases-tab[aria-selected='true'] {
+    @apply border-bronze/60 bg-white/[0.06] text-bronze-light;
+  }
+
+  .cases-grid {
+    @apply grid gap-6 sm:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .case-card.is-hidden {
     display: none;
   }
 
-  .cases-scroll__track {
-    @apply flex w-max gap-6;
-  }
-
-  .cases-carousel__btn {
-    @apply inline-flex size-10 shrink-0 items-center justify-center border border-white/25 text-paper transition-colors
-      hover:border-bronze/60 hover:text-bronze-light
-      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze
-      disabled:pointer-events-none disabled:opacity-30;
+  .contact-map__frame {
+    @apply mt-4 aspect-[16/10] w-full border border-white/10 bg-navy-900;
   }
 
   .grid-credentials {
@@ -535,7 +559,7 @@
   }
 
   .case-card {
-    @apply flex w-[min(85vw,20rem)] shrink-0 snap-start flex-col border border-white/10 px-5 py-6 sm:w-[22rem] lg:w-[24rem];
+    @apply flex h-full flex-col border border-white/10 px-5 py-6;
   }
 
   .case-card__title {

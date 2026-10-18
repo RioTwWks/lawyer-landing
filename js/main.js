@@ -216,47 +216,58 @@
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  const casesCarousel = document.querySelector('[data-cases-carousel]');
-  const casesScroll = document.querySelector('[data-cases-scroll]');
-  const casesPrev = document.querySelector('[data-cases-prev]');
-  const casesNext = document.querySelector('[data-cases-next]');
+  const casesTabsRoot = document.querySelector('[data-cases-tabs]');
+  const casesPanel = document.querySelector('[data-cases-panel]');
 
-  if (casesCarousel && casesScroll && casesPrev && casesNext) {
-    const getCasesStep = () => {
-      const card = casesScroll.querySelector('.case-card');
-      if (!card) return casesScroll.clientWidth;
-      const track = casesScroll.querySelector('.cases-scroll__track');
-      const gap = track ? parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 24 : 24;
-      return card.offsetWidth + gap;
-    };
+  if (casesTabsRoot && casesPanel) {
+    const tabButtons = Array.from(casesTabsRoot.querySelectorAll('[data-cases-filter]'));
+    const caseCards = Array.from(casesPanel.querySelectorAll('[data-case-category]'));
 
-    const syncCasesButtons = () => {
-      const maxScroll = casesScroll.scrollWidth - casesScroll.clientWidth;
-      casesPrev.disabled = casesScroll.scrollLeft <= 1;
-      casesNext.disabled = maxScroll <= 1 || casesScroll.scrollLeft >= maxScroll - 1;
-    };
-
-    const scrollCases = (direction) => {
-      casesScroll.scrollBy({
-        left: direction * getCasesStep(),
-        behavior: reduceMotion ? 'auto' : 'smooth',
+    const applyCasesFilter = (category) => {
+      caseCards.forEach((card) => {
+        const match = card.getAttribute('data-case-category') === category;
+        card.classList.toggle('is-hidden', !match);
+        card.toggleAttribute('hidden', !match);
       });
     };
 
-    casesPrev.addEventListener('click', () => scrollCases(-1));
-    casesNext.addEventListener('click', () => scrollCases(1));
-    casesScroll.addEventListener('scroll', syncCasesButtons, { passive: true });
-    window.addEventListener('resize', syncCasesButtons, { passive: true });
-    casesScroll.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        scrollCases(-1);
-      }
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        scrollCases(1);
-      }
+    const activateCasesTab = (button) => {
+      const category = button.getAttribute('data-cases-filter');
+      if (!category) return;
+
+      tabButtons.forEach((tab) => {
+        const isActive = tab === button;
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
+      });
+
+      const panelLabel = button.id;
+      if (panelLabel) casesPanel.setAttribute('aria-labelledby', panelLabel);
+      applyCasesFilter(category);
+    };
+
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => activateCasesTab(button));
+      button.addEventListener('keydown', (event) => {
+        const index = tabButtons.indexOf(button);
+        if (index < 0) return;
+
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          const next = tabButtons[(index + 1) % tabButtons.length];
+          activateCasesTab(next);
+          next.focus();
+        }
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          const prev = tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
+          activateCasesTab(prev);
+          prev.focus();
+        }
+      });
     });
-    syncCasesButtons();
+
+    const defaultTab = tabButtons.find((tab) => tab.getAttribute('aria-selected') === 'true') ?? tabButtons[0];
+    if (defaultTab) activateCasesTab(defaultTab);
   }
 })();

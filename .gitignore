@@ -2,3 +2,7 @@ bin/
 node_modules/
 .DS_Store
 *.log
+images/*.jpg
+images/*.jpeg
+images/*.JPG
+images/*.JPEG

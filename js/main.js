@@ -270,4 +270,44 @@
     const defaultTab = tabButtons.find((tab) => tab.getAttribute('aria-selected') === 'true') ?? tabButtons[0];
     if (defaultTab) activateCasesTab(defaultTab);
   }
+
+  const portraitRoot = document.querySelector('[data-portrait-carousel]');
+  if (portraitRoot) {
+    const slides = Array.from(portraitRoot.querySelectorAll('[data-portrait-slide]'));
+    const prevBtn = portraitRoot.querySelector('[data-portrait-prev]');
+    const nextBtn = portraitRoot.querySelector('[data-portrait-next]');
+    const dotsRoot = portraitRoot.querySelector('[data-portrait-dots]');
+    let activeIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
+    if (activeIndex < 0) activeIndex = 0;
+
+    const renderPortraitDots = () => {
+      if (!dotsRoot) return;
+      dotsRoot.innerHTML = '';
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'portrait-carousel__dot';
+        dot.setAttribute('aria-label', `Фото ${index + 1} из ${slides.length}`);
+        if (index === activeIndex) dot.classList.add('is-active');
+        dot.addEventListener('click', () => setPortraitSlide(index));
+        dotsRoot.appendChild(dot);
+      });
+    };
+
+    const setPortraitSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === activeIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.toggleAttribute('hidden', !isActive);
+      });
+      dotsRoot?.querySelectorAll('.portrait-carousel__dot').forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === activeIndex);
+      });
+    };
+
+    prevBtn?.addEventListener('click', () => setPortraitSlide(activeIndex - 1));
+    nextBtn?.addEventListener('click', () => setPortraitSlide(activeIndex + 1));
+    renderPortraitDots();
+  }
 })();

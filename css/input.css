@@ -346,6 +346,52 @@
     @apply aspect-[3/4] w-full rounded-[15px] object-cover object-top;
   }
 
+  .portrait-carousel {
+    @apply relative;
+  }
+
+  .portrait-carousel__viewport {
+    @apply relative overflow-hidden rounded-[15px];
+  }
+
+  .portrait-carousel__slide {
+    @apply block w-full transition-opacity duration-500 ease-out-expo;
+  }
+
+  .portrait-carousel__slide:not(.is-active) {
+    @apply pointer-events-none absolute inset-0 opacity-0;
+  }
+
+  .portrait-carousel__slide.is-active {
+    @apply relative opacity-100;
+  }
+
+  .portrait-carousel__btn {
+    @apply absolute top-1/2 z-10 inline-flex size-10 -translate-y-1/2 items-center justify-center border border-ink/15 bg-paper/90 text-ink shadow-sm transition-colors
+      hover:border-bronze/50 hover:text-bronze-dark
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .portrait-carousel__btn--prev {
+    @apply left-3;
+  }
+
+  .portrait-carousel__btn--next {
+    @apply right-3;
+  }
+
+  .portrait-carousel__dots {
+    @apply mt-4 flex justify-center gap-2;
+  }
+
+  .portrait-carousel__dot {
+    @apply size-2 rounded-full bg-ink/20 transition-colors;
+  }
+
+  .portrait-carousel__dot.is-active {
+    @apply bg-bronze;
+  }
+
   .hero-portrait {
     @apply aspect-[3/4] w-full rounded-[15px] object-cover object-top shadow-[0_24px_60px_-20px_rgba(0,0,0,0.55)];
   }

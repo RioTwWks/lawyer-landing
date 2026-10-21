@@ -49,3 +49,29 @@ jobs:
           --exclude "node_modules*" \
           --no-verify-ssl \
           --delete
+
+    - name: Deploy folder to Selectel S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ru-7
+      run: |
+        TARGET_DIR="./dist"
+        if [ ! -d "$TARGET_DIR" ]; then
+          TARGET_DIR="."
+        fi
+        
+        # 1. Загружаем файлы статики
+        aws s3 sync $TARGET_DIR s3://${{ secrets.SELECTEL_BUCKET_NAME }} \
+          --endpoint-url=https://s3.ru-7.storage.selcloud.ru \
+          --exclude ".git*" \
+          --exclude ".github*" \
+          --exclude "node_modules*" \
+          --no-verify-ssl \
+          --delete
+
+        # 2. ПРИНУДИТЕЛЬНЫЙ БИНД СЕРТИФИКАТА (Force-bind через API Selectel)
+        # Мы отправляем запрос к API хранилища, чтобы связать ваш домен с вашим активным сертификатом
+        curl -X POST "https://selcloud.ru{{ secrets.SELECTEL_BUCKET_NAME }}?domain=www.delopravoe-bozhko.ru" \
+          -H "Authorization: Bearer ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}" \
+          --insecure

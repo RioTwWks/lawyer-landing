@@ -444,16 +444,53 @@
     @apply text-paper/25;
   }
 
-  .grid-services {
-    @apply grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3;
+  /* Услуги: раскрывающиеся списки по категориям */
+  .services-groups {
+    @apply grid gap-10 lg:grid-cols-2 lg:gap-12;
   }
 
-  .grid-services > * {
-    @apply bg-paper;
+  .services-group__title {
+    @apply mb-5 font-display text-xl font-semibold text-navy-900 sm:text-2xl;
   }
 
-  .section--muted .grid-services > * {
-    @apply bg-paper-warm;
+  .services-acc {
+    @apply divide-y divide-ink/10 border border-ink/10 bg-paper;
+  }
+
+  .service-item__head {
+    @apply flex cursor-pointer select-none list-none items-center justify-between gap-4 px-5 py-4
+      text-sm font-semibold tracking-wide text-ink transition-colors duration-200
+      hover:text-bronze-dark
+      focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-bronze;
+  }
+
+  .service-item__head::-webkit-details-marker {
+    display: none;
+  }
+
+  .service-item__icon {
+    @apply size-4 shrink-0 text-bronze-dark transition-transform duration-300;
+  }
+
+  .service-item[open] .service-item__icon {
+    transform: rotate(180deg);
+  }
+
+  .service-item__list {
+    @apply space-y-2 px-5 pb-5 pt-1 text-sm leading-relaxed text-ink-muted;
+  }
+
+  .service-item__list li {
+    @apply relative pl-4;
+  }
+
+  .service-item__list li::before {
+    content: "";
+    @apply absolute left-0 top-[0.65em] h-px w-2 bg-bronze;
+  }
+
+  .service-item__sublist {
+    @apply mt-2 space-y-1.5 pl-3 text-[0.8125rem];
   }
 
   .grid-process {
